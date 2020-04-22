@@ -132,7 +132,7 @@ namespace AzureFunctionsAdventure
                 return new OkObjectResult(new ApiJsonResponse()
                 {
                     Success = true,
-                    Entity = queryResult.Result
+                    Entity = MappingsPerson.ToPerson(queryResult.Result as PersonTableEntity)
                 });
             }
         }
