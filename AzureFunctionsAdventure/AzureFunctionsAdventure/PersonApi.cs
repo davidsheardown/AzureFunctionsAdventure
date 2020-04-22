@@ -86,7 +86,7 @@ namespace AzureFunctionsAdventure
             List<Person> people = new List<Person>();
             foreach (var item in segment.Results)
             {
-                people.Add(MappingsPersion.ToPerson(item));
+                people.Add(MappingsPerson.ToPerson(item));
             }
 
 
@@ -115,14 +115,14 @@ namespace AzureFunctionsAdventure
             }
 
 
-            var query = new TableQuery<PersonTableEntity>().Where($"Segment='Person', RowKey={id}");
-            var segment = await personTable.ExecuteQuerySegmentedAsync(query, null);
+            var tableOperation = TableOperation.Retrieve<PersonTableEntity>("Person", id);
+            var queryResult = await personTable.ExecuteAsync(tableOperation);
 
 
             return new OkObjectResult(new ApiJsonResponse()
             {
                 Success = true,
-                Entity = segment.Results
+                Entity = queryResult.Result
             });
         }
     }

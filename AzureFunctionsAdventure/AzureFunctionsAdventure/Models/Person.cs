@@ -39,7 +39,7 @@ namespace AzureFunctionsAdventure.Models
 
 
     // Mappings from/to DTO and Person Entity
-    public static class MappingsPersion
+    public static class MappingsPerson
     {
         public static PersonTableEntity toTableEntity(this Person person)
         {
