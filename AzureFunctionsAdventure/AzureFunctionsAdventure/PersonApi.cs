@@ -119,11 +119,22 @@ namespace AzureFunctionsAdventure
             var queryResult = await personTable.ExecuteAsync(tableOperation);
 
 
-            return new OkObjectResult(new ApiJsonResponse()
+            if (queryResult.Result == null)
             {
-                Success = true,
-                Entity = queryResult.Result
-            });
+                return new NotFoundObjectResult(new ApiJsonResponse()
+                {
+                    Success = false,
+                    ErrorMessage = $"Cannot find person with id of {id}"
+                });
+            }
+            else
+            {
+                return new OkObjectResult(new ApiJsonResponse()
+                {
+                    Success = true,
+                    Entity = queryResult.Result
+                });
+            }
         }
     }
 }
