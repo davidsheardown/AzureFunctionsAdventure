@@ -45,14 +45,14 @@ namespace AzureFunctionsAdventure
                     {
                         Success = true,
                         ErrorMessage = null,
-                        Entity = person
+                        Entities = person
                     });
                 }
                 else
                 {
                     return new BadRequestObjectResult(new ApiJsonResponse()
                     {
-                        Entity = null,
+                        Entities = null,
                         Success = false,
                         ErrorMessage = "No person object sent"
                     });
@@ -62,7 +62,7 @@ namespace AzureFunctionsAdventure
             {
                 return new BadRequestObjectResult(new ApiJsonResponse()
                 {
-                    Entity = jsonObject,
+                    Entities = jsonObject,
                     Success = false,
                     ErrorMessage = ex.Message
                 });
@@ -93,7 +93,7 @@ namespace AzureFunctionsAdventure
             return new OkObjectResult(new ApiJsonResponse()
             {
                 Success = true,
-                Entity = people
+                Entities = people
             });
         }
 
@@ -132,7 +132,7 @@ namespace AzureFunctionsAdventure
                 return new OkObjectResult(new ApiJsonResponse()
                 {
                     Success = true,
-                    Entity = MappingsPerson.ToPerson(queryResult.Result as PersonTableEntity)
+                    Entities = MappingsPerson.ToPerson(queryResult.Result as PersonTableEntity)
                 });
             }
         }
