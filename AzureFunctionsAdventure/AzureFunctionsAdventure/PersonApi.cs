@@ -16,7 +16,7 @@ namespace AzureFunctionsAdventure
 {
     public static class PersonApi
     {
-        [FunctionName("PersonApiCreate")]
+        [FunctionName("PersonApiCreatePerson")]
         public static async Task<IActionResult> CreatePerson(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = "person")] HttpRequest req,
             [Table("person", Connection = "AzureWebJobsStorage")] IAsyncCollector<PersonTableEntity> personTable,
