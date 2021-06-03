@@ -78,7 +78,7 @@ namespace AzureFunctionsAdventure
             [Table("person", Connection = "AzureWebJobsStorage")] CloudTable personTable,
             ILogger log)
         {
-            log.LogInformation("PersonApi: Get All People");
+            log.LogInformation("PersonApi: Get All People - Updated 3rd June 2021");
 
 
             var query = new TableQuery<PersonTableEntity>();
